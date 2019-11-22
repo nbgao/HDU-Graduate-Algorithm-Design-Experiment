@@ -30,6 +30,7 @@ bool F(int &min_w, int *x, int *r, int sum_w, int sum_c, int i){
     return found;
 }
 
+// x[i]表示第i个部件的厂商号，r表示最佳分配列表，min_w表示最小重量总和
 int main(){
     cin>>n>>m>>d;
     int x[n], r[n], min_w=INT_MAX;
