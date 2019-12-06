@@ -1,4 +1,5 @@
 // 6-10 世界名画陈列问题 [分支限界法(优先级队列)]
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -29,15 +30,16 @@ int Solve(){
         int v[N][N];
         memset(v,0,sizeof(v));
         for(int j=1;j<=n;j++){
-            if(i & (1<<(j-1))){
-                if(v[i][j] == 0)  // 置为机器人
+            if(i&(1<<(j-1))){
+                if(v[1][j] == 0){  // 置为机器人
                     v[1][j] = 1;
-                if(v[1][j-1] == 0)    // 左侧被监视覆盖
-                    v[1][j-1] = 2;
-                if(v[1][j+1] == 0)    // 右侧被监视覆盖
-                    v[1][j+1] = 2;
-                if(v[2][j] == 0)    // 下侧被监视覆盖
-                    v[2][j] = 2;
+                    if(v[1][j-1] == 0)    // 左侧被监视覆盖
+                        v[1][j-1] = 2;
+                    if(v[1][j+1] == 0)    // 右侧被监视覆盖
+                        v[1][j+1] = 2;
+                    if(v[2][j] == 0)    // 下侧被监视覆盖
+                        v[2][j] = 2;
+                }
                 sum++;  // 机器人数增加
             }
         }
@@ -60,8 +62,8 @@ int Solve(){
 
             if(Min > p.s){  //   最佳解替换
                 Min = p.s;
-                for(int i=1;i<=m;i++)
-                    for(int j=1;j<=n;j++)
+                for(int i=1;i<N;i++)
+                    for(int j=1;j<N;j++)
                         x[i][j] = p.x[i][j];
                 for(int i=1;i<=n;i++){
                     if(x[m+1][i]==1){
@@ -75,19 +77,19 @@ int Solve(){
         int sum = 0;
         int r[N][N];
         memset(r, 0, sizeof(r));
-        for(int i=0;i<=m;i++)
-            for(int j=0;j<=n;j++)
+        for(int i=0;i<N;i++)
+            for(int j=0;j<N;j++)
                 r[i][j] = p.x[i][j];
         for(int i=1;i<=n;i++){
             if(r[t][i] == 0){
+                if(r[t+1][i] != 1)
+                    r[t+1][i] = 1;
                 if(r[t][i] != 1)
                     r[t][i] = 2;
                 if(r[t+1][i+1] != 1)
                     r[t+1][i+1] = 2;
                 if(r[t+1][i-1] != 1)
                     r[t+1][i-1] = 2;
-                if(r[t+1][i] != 1)
-                    r[t+1][i] = 1;
                 if(r[t+2][i] != 1)
                     r[t+2][i] = 2;
                 sum++;
@@ -98,19 +100,21 @@ int Solve(){
     return Min;
 }
 
-// x[i]表示
 int main(){
-    cin>>m>>n;
-    memset(x, 0, sizeof(x));
-    int cnt = Solve();
-    cout<<cnt<<endl;
-    for(int i=1;i<=m;i++){
-        for(int j=1;j<=n;j++)
-            cout<<(x[i][j]==1?1:0)<<" ";  
-        cout<<endl;
+    while(cin>>m>>n){
+        memset(x, 0, sizeof(x));
+        int cnt = Solve();
+        cout<<cnt<<endl;
+        for(int i=1;i<=m;i++){
+            for(int j=1;j<=n;j++)
+                // cout<<x[i][j]<<" ";
+                cout<<(x[i][j]==1?1:0)<<" ";  
+            cout<<endl;
+        }
     }
     return 0;
 }
+
 /*
 4 4
 4
