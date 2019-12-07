@@ -28,7 +28,7 @@ class Knap{
         int *bestx; //最优解
         MaxHeap<HeapNode<Tw, Tp>> *H;
         Tp Bound(int i);
-        void AddLiveNode(Tp up, Tp cp, Tw, cw, bool ch, int level, int *x);
+        void AddLiveNode(Tp up, Tp cp, Tw cw, bool ch, int level, int *x);
     public:
         Tp MaxKnapsack(Tp*, Tw*, int, int*);
 };

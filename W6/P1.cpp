@@ -1,8 +1,8 @@
 // 6-5 运动员最佳配对问题 [分支限界法(优先级队列)]
 #include <bits/stdc++.h>
-#define N 21
 using namespace std;
 
+const int N = 21;
 int n;
 int P[N][N], Q[N][N];
 

@@ -103,7 +103,7 @@ int Solve(){
 int main(){
     while(cin>>m>>n){
         memset(x, 0, sizeof(x));
-        int cnt = Solve();
+        cnt = Solve();
         cout<<cnt<<endl;
         for(int i=1;i<=m;i++){
             for(int j=1;j<=n;j++)
