@@ -1,9 +1,9 @@
 // 5-4 运动员最佳配对问题 [回溯法]
 #include <bits/stdc++.h>
-#define N 21
 using namespace std;
 
-int n,m,d;
+const int N = 21;
+int n,m;
 int p[N][N], q[N][N];
 
 void F(int &Max, int *x, int *r, int i){

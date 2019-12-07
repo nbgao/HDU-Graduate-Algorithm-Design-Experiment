@@ -1,11 +1,10 @@
 // 5-3 最小重量机器设计问题 [回溯法]
 #include <bits/stdc++.h>
-#define N 1001
-#define M 1001
 using namespace std;
 
+const int N = 1001;
 int n,m,d;
-int w[N][M], c[N][M];
+int w[N][N], c[N][N];
 
 bool F(int &min_w, int *x, int *r, int sum_w, int sum_c, int i){
     if(i>n){

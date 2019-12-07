@@ -1,9 +1,9 @@
 // 5-13 工作分配问题 [回溯法]
 #include <bits/stdc++.h>
-#define N 21
 using namespace std;
 
-int n,m,d;
+const int N = 21;
+int n,m;
 int c[N][N];
 
 void F(int &Min, int *x, int *r, int i){
