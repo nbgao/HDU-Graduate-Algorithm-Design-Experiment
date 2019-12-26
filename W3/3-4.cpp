@@ -10,11 +10,15 @@ int main(){
     int w[n+1], v[n+1];
     for(int i=1;i<=n;i++)
         cin>>w[i]>>v[i];
-    int dp[c+1];
+    int dp[n+1][c+1];
     memset(dp,0,sizeof(dp));
     for(int i=1;i<=n;i++)
-        for(int j=c;j>=w[i];j--)
-            dp[j] = max(dp[j], dp[j-w[i]]+v[i]);
+        for(int j=c;j>=0;j--){
+            if(j<w[i])
+                dp[i][j] = dp[i-1][j];
+            else
+                dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]]+v[i]);   
+        }
     cout<<dp[c]<<endl;
     return 0;
 }
